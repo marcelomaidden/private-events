@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+
+    @attendance = Attendance.new
   end
 
   def create
@@ -20,6 +22,14 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+  end
+
+  def enroll
+    
+    user = User.find(session[:current_userid]['id'])
+    a = Attendance.new(user_id: user.id, event_id: params[:id])
+    a.save
+    redirect_to events_path
   end
 
   private

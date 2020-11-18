@@ -6,5 +6,11 @@
     </li>
   <% end %>
 </ul>
+
+<%= form_for @attendance do |f| %>
+  <%= hidden_field_tag :event_id, @event.id %>
+  <%= f.submit %>
+<% end %>
+
 <br />
 <%= link_to  "Back to events", events_path %>

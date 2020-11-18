@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     signin(@user.id)
     @date = date_now
+
+    @events = Event.all
   end
 
   def sign_in
