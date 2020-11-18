@@ -1,11 +1,17 @@
-<h1>Events#new</h1>
+<h1>Create an Event</h1>
 
 <%= form_for @event  do |f| %>
-  <%= f.label :name, 'Event Name' %>
-  <%= f.text_field :name %>
-  <%= f.label :description, 'Event description' %>
-  <%= f.text_area :description %>
-  <%= f.label :date, 'Event Date' %>
-  <%= f.datetime_select :date %>
+  <%= f.label :name, 'Event Name' %><br/>
+  <%= f.text_field :name %><br/>
+  <%= f.label :description, 'Event description' %><br/>
+  <%= f.text_area :description %><br/>
+  <%= f.label :date, 'Event Date' %><br/>
+  <%= f.datetime_select :date %><br/>
   <%= f.submit %>
+<% end %>
+
+<% if session[:current_userid] %>
+  <%= link_to  "Back to My Events", user_path(session[:current_userid]['id']) %>
+<% else %>
+  <%= link_to  "Register", new_user_path %>
 <% end %>

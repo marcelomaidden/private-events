@@ -1,4 +1,10 @@
-<h1>Events#show</h1>
+<h1><%= @event.name %></h1>
+
+<label>Event Description:</label><br />
+<%= @event.description %><br /><br />
+<label>Event Date:</label><br />
+<%= @event.date %><br />
+
 <ul>
   <% @event.attendee.each do |a| %>
     <li>
@@ -7,9 +13,11 @@
   <% end %>
 </ul>
 
-<%= form_for @attendance do |f| %>
-  <%= hidden_field_tag :event_id, @event.id %>
-  <%= f.submit %>
+<% if session[:current_userid] %>
+  <%= form_for @attendance do |f| %>
+    <%= hidden_field_tag :event_id, @event.id %>
+    <%= f.submit 'Enroll' %>
+  <% end %>
 <% end %>
 
 <br />

@@ -11,20 +11,16 @@
 
   <body>
     <nav class = 'nav'>
-      <ul class = 'navigation'>
-        <%= link_to  "Events", events_path %>
+        <%= link_to  "All Events", events_path %>
 
         <% if session[:current_userid].nil?%>
           <%= link_to  "Sign-up", new_user_path %>
           <%= link_to  "Sign-in", sign_in_path %>
         <%else%>
-          <%= link_to  "Users", user_path(session[:current_userid]['id']) %>
+          <%= link_to  session[:current_userid]['username'], user_path(session[:current_userid]['id']) %>
           <%= link_to  "Sign-out", sign_out_path %>
         <%end%>
-      </ul>
     </nav>
-
-    <%= session[:current_userid]['username'] if !session[:current_userid].nil? %>
     <%= yield %>
   </body>
 </html>
