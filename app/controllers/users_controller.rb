@@ -1,3 +1,4 @@
+require 'date'
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -17,6 +18,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     signin(@user.id)
+    @date = DateTime.now
+    @date = @date.strftime("%Y/%m/%d %H:%M")
   end
 
   def sign_in
