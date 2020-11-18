@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= session[:current_userid]['username'] %>
+    <%= session[:current_userid]['username'] if !session[:current_userid].nil? %>
     <%= yield %>
   </body>
 </html>
