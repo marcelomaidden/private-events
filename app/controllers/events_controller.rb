@@ -1,3 +1,5 @@
+include EventsHelper
+
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -25,16 +27,9 @@ class EventsController < ApplicationController
   end
 
   def enroll
-    
     user = User.find(session[:current_userid]['id'])
     a = Attendance.new(user_id: user.id, event_id: params[:id])
     a.save
     redirect_to events_path
-  end
-
-  private
-
-  def event_params
-    params.require(:event).permit(:name, :description, :date, :user_id)
   end
 end

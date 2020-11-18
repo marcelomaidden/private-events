@@ -11,5 +11,13 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'sign_in' do
+    before 'soemthing' do
+      a = User.new(username: 'ok', password: 'oesa')
+      a.save
+    end
+    it 'returns current session' do
+      expect(signin(1)).to be_an_instance_of(User)
+    end
+  end
 end

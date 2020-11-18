@@ -1,4 +1,6 @@
 require 'date'
+include UsersHelper
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -30,15 +32,5 @@ class UsersController < ApplicationController
   def sign_out
     reset_session
     redirect_to sign_in_path
-  end
-
-  private
-
-  def signin(id)
-    session[:current_userid] = User.find(id)
-  end
-
-  def user_params
-    params.require(:user).permit(:username, :password, :email)
   end
 end
