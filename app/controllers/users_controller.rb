@@ -16,13 +16,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    signin(@user.id)
   end
+
+  def sign_in
+    @users = User.all
+  end
+
+  private
 
   def signin(id)
     session[:current_userid] = User.find(id)
   end
-
-  private
 
   def user_params
     params.require(:user).permit(:username, :password, :email)
