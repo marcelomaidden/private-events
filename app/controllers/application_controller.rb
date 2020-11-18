@@ -1,5 +1,7 @@
+require 'date'
 class ApplicationController < ActionController::Base
-  def session_signed
-    session[:current_userid] = @user
+  def date_now
+    date = DateTime.now
+    date.strftime("%Y/%m/%d %H:%M")
   end
 end

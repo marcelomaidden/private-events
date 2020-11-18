@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     signin(@user.id)
-    @date = DateTime.now
-    @date = @date.strftime("%Y/%m/%d %H:%M")
+    @date = date_now
   end
 
   def sign_in

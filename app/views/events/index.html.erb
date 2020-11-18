@@ -1,5 +1,6 @@
 <h1>Events#index</h1>
 <ul class = "events">
+
 <% @events.each do |e| %>
    <li>
    <%= link_to  e.name, event_path(e.id) %>
