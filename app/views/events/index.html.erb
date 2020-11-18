@@ -1,10 +1,22 @@
 <h1>Events#index</h1>
-<ul class = "events">
+<h2>Upcoming events</h2>
+<ul class = "upcoming">
 
-<% @events.each do |e| %>
-   <li>
-   <%= link_to  e.name, event_path(e.id) %>
-   <%= e.date %>
-   </li>
-<%end%>
+   <% @events.upcoming.each do |e| %>
+      <li>
+      <%= link_to  e.name, event_path(e.id) %>
+      <%= e.date %>
+      </li>
+   <%end%>
+</ul>
+
+<h2>Past events</h2>
+<ul class = "past">
+
+   <% @events.past.each do |e| %>
+      <li>
+      <%= link_to  e.name, event_path(e.id) %>
+      <%= e.date %>
+      </li>
+   <%end%>
 </ul>

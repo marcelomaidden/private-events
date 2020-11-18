@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def sign_out
+    reset_session
+    redirect_to sign_in_path
+  end
+
   private
 
   def signin(id)
