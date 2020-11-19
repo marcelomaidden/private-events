@@ -1,6 +1,6 @@
 <h1>All Events</h1>
 
-<% if Event.all.nil? %>
+<% if !Event.any? %>
   <h2>No events</h2>
 <% else %>
   <h2>Upcoming events</h2>

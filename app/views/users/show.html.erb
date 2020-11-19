@@ -1,6 +1,6 @@
 <h1>My Events</h1>
 
-<% if @user.attended_events.nil? %>
+<% if !@user.attended_events.any? %>
   <h3>You don't have any Events</h3>
 <% else %>
   <ul class="events">

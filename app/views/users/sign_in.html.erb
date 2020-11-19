@@ -1,8 +1,23 @@
-<ul>
+<%
+=begin%>
+ <ul>
   <% @users.each do |n| %>
     <li>
       <%= link_to  n.username , user_path(n.id) %>
     </li>
   <% end %>
-</ul>
+</ul> 
+<%
+=end%>
 
+<h1>Login</h1>
+
+<%= form_with model: @user do |f| %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br><br>
+  <%= f.submit 'Login' %>
+<% end %>
+
+<%= link_to  "Register", new_user_path %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      signin(@user.id)
+      current_user(@user.id)
       redirect_to @user
     else
       render :new
@@ -19,14 +19,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    signin(@user.id)
+    current_user(@user.id)
     @date = date_now
 
     @events = Event.all
   end
 
+  def sign_in_new
+    @user = User.find_by(username: params[:username])
+    if @user && @user.password == User.find_by(password: params[:password]).password
+      current_user(@user.id)
+      redirect_to events_path
+    else
+      render :sign_in
+    end
+  end
+
   def sign_in
-    @users = User.all
   end
 
   def sign_out

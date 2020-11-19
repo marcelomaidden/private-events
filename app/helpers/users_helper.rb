@@ -1,7 +1,7 @@
 module UsersHelper
-  def signin(id)
-    session[:current_userid] = User.find(id)
-    session[:current_userid]
+  def current_user(id)
+    session[:current_user] = User.find(id)
+    session[:current_user]
   end
 
   def user_params

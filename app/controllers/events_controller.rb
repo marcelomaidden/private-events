@@ -1,4 +1,5 @@
 include EventsHelper
+include UsersHelper
 
 class EventsController < ApplicationController
   def index
@@ -12,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    user = User.find(session[:current_userid]['id'])
+    user = User.find(session[:current_user]['id'])
     @event = user.events.build(event_params)
 
     if @event.save
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def enroll
-    user = User.find(session[:current_userid]['id'])
+    user = User.find(session[:current_user]['id'])
     a = Attendance.new(user_id: user.id, event_id: params[:id])
     a.save
     redirect_to events_path
