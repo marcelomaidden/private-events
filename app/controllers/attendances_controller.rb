@@ -1,6 +1,5 @@
 class AttendancesController < ApplicationController
   def create
-
     puts params[:event_id]
     unless User.find(params[:user][:user_id]).attendances.where(event_id: params[:event_id]).any?
       user = User.find(params[:user][:user_id])

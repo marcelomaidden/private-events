@@ -1,7 +1,8 @@
 require 'date'
-include UsersHelper
 
 class UsersController < ApplicationController
+  include UsersHelper
+
   def new
     if session[:current_user]
       redirect_to events_path

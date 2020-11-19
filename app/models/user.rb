@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   scope :upcoming, -> { where('date >= ?', Date.today) }
-  scope :past, -> { where('date < ? ', Date.today)}
+  scope :past, -> { where('date < ? ', Date.today) }
 end

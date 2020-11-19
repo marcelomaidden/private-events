@@ -1,7 +1,7 @@
-include EventsHelper
-include UsersHelper
-
 class EventsController < ApplicationController
+  include EventsHelper
+  include UsersHelper
+
   def index
     @events = Event.all
   end
