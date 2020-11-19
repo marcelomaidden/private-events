@@ -7,7 +7,11 @@
   <ul class = "upcoming">
     <% @events.upcoming.each do |e| %>
         <li>
-          <%= link_to  e.name, event_path(e.id) %>
+          <% if session[:current_user] %>
+            <%= link_to  e.name, event_path(e.id) %>
+          <% else %>
+            <%= link_to  e.name, sign_in_path %>
+          <% end %>
           <div>
             <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
           </div>

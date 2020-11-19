@@ -14,6 +14,10 @@
   <%= f.datetime_select :date, ampm: true, order: %i[day month year], class: "date" %>
   </div>
   <%= f.submit 'Create Event', class: "create-btn" %>
+
+  <% @event.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
 <% end %>
 
 

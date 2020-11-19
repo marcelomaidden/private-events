@@ -22,15 +22,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    current_user(@user.id)
-    @date = date_now
-    @events = @user.attended_events
+    if session[:current_user]
+      @user = User.find(params[:id])
+      current_user(@user.id)
+      @date = date_now
+      @events = @user.attended_events
+    else
+      redirect_to sign_in_path
+    end
   end
 
   def sign_in_new
     @user = User.find_by(username: params[:username])
-    if @user && @user.password == User.find_by(password: params[:password]).password
+    if @user && params[:password] == @user.password
       current_user(@user.id)
       redirect_to events_path
     else
@@ -39,11 +43,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in
-    if session[:current_user]
-      redirect_to events_path
-    else
-      render :sign_in
-    end
+    redirect_to events_path if session[:current_user]
   end
 
   def sign_out

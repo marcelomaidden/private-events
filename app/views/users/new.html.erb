@@ -8,4 +8,8 @@
   <%= f.label :email, 'Email', class: "email-label" %>
   <%= f.email_field :email, class: "email" %>
   <%= f.submit 'Register', class: "register-btn" %>
+
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
 <% end %>

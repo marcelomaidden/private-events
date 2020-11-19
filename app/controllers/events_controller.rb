@@ -7,9 +7,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-
-    @attendance = Attendance.new
+    if session[:current_user]
+      @event = Event.find(params[:id])
+    else
+      redirect_to sign_in_path
+    end
   end
 
   def create
@@ -24,7 +26,11 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    if session[:current_user]
+      @event = Event.new
+    else
+      redirect_to sign_in_path
+    end
   end
 
   def enroll
