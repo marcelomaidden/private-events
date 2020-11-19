@@ -19,8 +19,3 @@
     <li><%= error %></li>
   <% end %>
 <% end %>
-
-
-<% if !session[:current_user] %>
-  <%= link_to  "Register", new_user_path %>
-<% end %>

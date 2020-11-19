@@ -8,10 +8,5 @@
   <div class="register-btn">
     <%= link_to  "Register", new_user_path %>
   </div>
-  <% if session[:current_user]%>
-    <% @user.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  <% end %>
 <% end %>
 

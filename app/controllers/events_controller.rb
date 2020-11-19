@@ -9,6 +9,8 @@ class EventsController < ApplicationController
   def show
     if session[:current_user]
       @event = Event.find(params[:id])
+
+      @attendance = Attendance.new
     else
       redirect_to sign_in_path
     end

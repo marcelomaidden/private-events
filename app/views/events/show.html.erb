@@ -19,7 +19,7 @@
   <% end %>
 </ul>
 
-<% if session[:current_userid] %>
+<% if session[:current_user] %>
   <%= form_for @attendance do |f| %>
     <%= hidden_field_tag :event_id, @event.id %>
     <%= f.submit 'Attend' %>
