@@ -17,7 +17,7 @@ RSpec.describe UsersHelper, type: :helper do
       a.save
     end
     it 'returns current session' do
-      expect(signin(1)).to be_an_instance_of(User)
+      expect(current_user(1)).to be_an_instance_of(User)
     end
   end
 end
