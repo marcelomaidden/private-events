@@ -13,10 +13,10 @@
       <h2>Upcoming Events</h2>
       <ul class="events">
         <% @user.attended_events.sort{ |a,b| a.date <=> b.date }.each do |e| %>
-          <% if e.date >= @date %>
+          <% if e.date.localtime.strftime("%m/%d/%Y %H:%M") >= @date %>
           <li>
             <%= link_to  e.name , event_path(e.id) %>
-            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%m/%d/%Y")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
           </li>
           <% end %>
         <% end %>
@@ -29,10 +29,10 @@
       <h2>Past Events</h2>
       <ul class="events">
         <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
-          <% if e.date < @date %>
+          <% if e.date.localtime.strftime("%m/%d/%Y %H:%M") < @date %>
             <li>
               <%= link_to  e.name , event_path(e.id) %>
-              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%m/%d/%Y")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
             </li>
           <% end %>
         <%end%>
