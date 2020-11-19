@@ -4,10 +4,10 @@
   <h2>No events</h2>
 <% else %>
   <div class="upcoming-cont">
-    <% if @events.upcoming.any? %>
+    <% if @upcoming.any? %>
       <h2>Upcoming Events</h2>
       <ul class = "upcoming">
-        <% @events.upcoming.each do |e| %>
+        <% @upcoming.each do |e| %>
             <li>
               <% if session[:current_user] %>
                 <%= link_to  e.name, event_path(e.id) %>
@@ -24,10 +24,10 @@
   </div>
 
   <div class="past-cont">
-    <% if @events.past.any? %>
+    <% if @past.any? %>
       <h2>Past Events</h2>
       <ul class = "past">
-        <% @events.past.each do |e| %>
+        <% @past.each do |e| %>
             <li>
             <%= link_to  e.name, event_path(e.id) %>
             <div>
