@@ -11,6 +11,7 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
 
       @attendance = Attendance.new
+
     else
       redirect_to sign_in_path
     end
