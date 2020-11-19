@@ -1,4 +1,4 @@
-<h1>My Events</h1>
+<h1>All My Events</h1>
 <div class="create-cont">
   <div class="create-btn">
     <%= link_to  "Create Event", new_event_path %>
@@ -24,7 +24,7 @@
     <% end %>
   </div>
 
-<div class="past-cont">
+  <div class="past-cont">
     <% if @events.past.any? %>
       <h2>Past Events</h2>
       <ul class="events">
@@ -38,5 +38,17 @@
         <%end%>
       </ul>
     <% end %>
-</div>
+  </div>
+<% end %>
+
+<% if @my_events.any? %>
+  <h2>Created Events</h2>
+  <ul class="my-events">
+    <% @my_events.each do |me| %>
+      <li>
+        <%= link_to  me.name, event_path(me.id) %>
+        <%= content_tag(:p, "Event Date: #{me.date.localtime.strftime("%Y/%m/%d")} Time: #{me.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

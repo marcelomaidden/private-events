@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       current_user(@user.id)
       @date = date_now
       @events = @user.attended_events
+      @my_events = @user.events
     else
       redirect_to sign_in_path
     end

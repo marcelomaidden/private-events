@@ -2,6 +2,6 @@ require 'date'
 class ApplicationController < ActionController::Base
   def date_now
     date = DateTime.now
-    date.strftime('%Y/%m/%d %H:%M')
+    date.localtime.strftime('%m/%d/%Y %H:%M')
   end
 end
