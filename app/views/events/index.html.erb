@@ -3,33 +3,39 @@
 <% if !Event.any? %>
   <h2>No events</h2>
 <% else %>
-  <h2>Upcoming Events</h2>
-  <ul class = "upcoming">
-    <% @events.upcoming.each do |e| %>
-        <li>
-          <% if session[:current_user] %>
-            <%= link_to  e.name, event_path(e.id) %>
-          <% else %>
-            <%= link_to  e.name, sign_in_path %>
-          <% end %>
-          <div>
-            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
-          </div>
-        </li>
-    <%end%>
-  </ul>
+  <div class="upcoming-cont">
+    <% if @events.upcoming.any? %>
+      <h2>Upcoming Events</h2>
+      <ul class = "upcoming">
+        <% @events.upcoming.each do |e| %>
+            <li>
+              <% if session[:current_user] %>
+                <%= link_to  e.name, event_path(e.id) %>
+              <% else %>
+                <%= link_to  e.name, sign_in_path %>
+              <% end %>
+              <div>
+                <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+              </div>
+            </li>
+        <%end%>
+      </ul>
+    <% end %>
+  </div>
 
-  <% if @events.past.any? %>
-    <h2>Past Events</h2>
-    <ul class = "past">
-      <% @events.past.each do |e| %>
-          <li>
-          <%= link_to  e.name, event_path(e.id) %>
-          <div>
-            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
-          </div>
-          </li>
-      <%end%>
-    </ul>
-  <%end%>
+  <div class="past-cont">
+    <% if @events.past.any? %>
+      <h2>Past Events</h2>
+      <ul class = "past">
+        <% @events.past.each do |e| %>
+            <li>
+            <%= link_to  e.name, event_path(e.id) %>
+            <div>
+              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+            </div>
+            </li>
+        <%end%>
+      </ul>
+    <%end%>
+  </div>
 <% end %>

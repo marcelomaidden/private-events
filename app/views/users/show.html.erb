@@ -8,31 +8,35 @@
 <% if !@user.attended_events.any? %>
   <h3>You don't have any Events</h3>
 <% else %>
-  <h2>Upcoming Events</h2>
-  <ul class="events">
-    <% @user.attended_events.sort{ |a,b| a.date <=> b.date }.each do |e| %>
-      <% if e.date >= @date %>
-      <li>
-        <%= link_to  e.name , event_path(e.id) %>
-        <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
-      </li>
-      <% end %>
-    <% end %>
-  </ul>
-
-  <br />
-
-  <% if @events.past.any? %>
-    <h2>Past Events</h2>
-    <ul class="events">
-      <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
-        <% if e.date < @date %>
+  <div class="upcoming-cont">
+    <% if @events.upcoming.any? %>
+      <h2>Upcoming Events</h2>
+      <ul class="events">
+        <% @user.attended_events.sort{ |a,b| a.date <=> b.date }.each do |e| %>
+          <% if e.date >= @date %>
           <li>
             <%= link_to  e.name , event_path(e.id) %>
             <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
           </li>
+          <% end %>
         <% end %>
-      <%end%>
-    </ul>
-  <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+<div class="past-cont">
+    <% if @events.past.any? %>
+      <h2>Past Events</h2>
+      <ul class="events">
+        <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
+          <% if e.date < @date %>
+            <li>
+              <%= link_to  e.name , event_path(e.id) %>
+              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+            </li>
+          <% end %>
+        <%end%>
+      </ul>
+    <% end %>
+</div>
 <% end %>
