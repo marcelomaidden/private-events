@@ -9,10 +9,10 @@
   <h3>You don't have any Events</h3>
 <% else %>
   <div class="upcoming-cont">
-    <% if @events.upcoming.any? %>
+    <% if @upcoming.any? %>
       <h2>Upcoming Events</h2>
       <ul class="events">
-        <% @user.attended_events.sort{ |a,b| a.date <=> b.date }.each do |e| %>
+        <% @attended_events.each do |e| %>
           <% if e.date.localtime.strftime("%m/%d/%Y %H:%M") >= @date %>
           <li>
             <%= link_to  e.name , event_path(e.id) %>
@@ -25,10 +25,10 @@
   </div>
 
   <div class="past-cont">
-    <% if @events.past.any? %>
+    <% if @past.any? %>
       <h2>Past Events</h2>
       <ul class="events">
-        <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
+        <% @attended_events.each do |e| %>
           <% if e.date.localtime.strftime("%m/%d/%Y %H:%M") < @date %>
             <li>
               <%= link_to  e.name , event_path(e.id) %>
