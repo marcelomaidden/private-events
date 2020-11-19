@@ -11,7 +11,7 @@
   <%= f.text_area :description, class: "desc" %>
   <%= f.label :date, 'Event Date', class: "date-label" %>
   <div>
-  <%= f.datetime_select :date, ampm: true, order: %i[day month year], class: "date" %>
+  <%= f.datetime_select :date, ampm: true, order: %i[day month year], default: 0.days.from_now.localtime, class: "date" %>
   </div>
   <%= f.submit 'Create Event', class: "create-btn" %>
 
