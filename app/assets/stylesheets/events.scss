@@ -15,7 +15,7 @@ a {
 }
 
 .back-to:hover {
-  color:rgb(255, 38, 0);
+  color: rgb(255, 38, 0);
 }
 
 .upcoming-cont {
@@ -23,7 +23,7 @@ a {
 }
 
 ul {
-padding: 0;
+  padding: 0;
 
   li {
     display: flex;
@@ -36,7 +36,7 @@ padding: 0;
   }
 
   a:hover {
-    color:rgb(255, 38, 0);
+    color: rgb(255, 38, 0);
   }
 }
 
@@ -65,6 +65,7 @@ padding: 0;
 
   textarea {
     @extend input;
+
     min-width: 100%;
     max-width: 100%;
     min-height: 70px;
