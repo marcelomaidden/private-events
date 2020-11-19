@@ -8,10 +8,6 @@
   justify-content: flex-end;
   width: 50%;
   float: right;
-  a {
-    text-decoration: none;
-    color: black;
-  }
 
   .create-btn {
     width: 100px;
@@ -19,6 +15,22 @@
     border-radius: 20px;
     background-color: rgb(192, 192, 192);
     cursor: pointer;
+
+    &:hover {
+      background-color: rgb(62, 100, 202);
+      color: white;
+    }
+
+    a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      color: white
+    }
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-<%= link_to  "Back to events", events_path %>
+<%= link_to  "< Back to events", events_path, class: "back-to" %>
 <br>
 <br>
 <h1><%= @event.name %></h1>
@@ -6,7 +6,7 @@
 <label>Event Description:</label><br />
 <%= @event.description %><br /><br />
 <label>Event Date:</label><br />
-<%= @event.date %><br />
+<%= @event.date.localtime.strftime("%Y/%m/%d %H:%M") %><br />
 
 <br />
 

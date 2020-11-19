@@ -8,7 +8,9 @@
     <% @events.upcoming.each do |e| %>
         <li>
           <%= link_to  e.name, event_path(e.id) %>
-          <%= e.date %>
+          <div>
+            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+          </div>
         </li>
     <%end%>
   </ul>
@@ -19,7 +21,9 @@
       <% @events.past.each do |e| %>
           <li>
           <%= link_to  e.name, event_path(e.id) %>
-          <%= e.date %>
+          <div>
+            <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+          </div>
           </li>
       <%end%>
     </ul>

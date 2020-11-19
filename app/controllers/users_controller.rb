@@ -3,7 +3,11 @@ include UsersHelper
 
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    if session[:current_user]
+      redirect_to events_path
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -35,6 +39,11 @@ class UsersController < ApplicationController
   end
 
   def sign_in
+    if session[:current_user]
+      redirect_to events_path
+    else
+      render :sign_in
+    end
   end
 
   def sign_out
