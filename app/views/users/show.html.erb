@@ -1,10 +1,15 @@
 <h1>My Events</h1>
+<div class="create-cont">
+  <div class="create-btn">
+    <%= link_to  "Create Event", new_event_path %>
+  </div>
+</div>
 
 <% if !@user.attended_events.any? %>
   <h3>You don't have any Events</h3>
 <% else %>
+  <h2>Upcoming</h2>
   <ul class="events">
-    <%= label_tag 'Upcoming'%>
     <% @user.attended_events.sort{ |a,b| a.date <=> b.date }.each do |e| %>
       <% if e.date >= @date %>
       <li>
@@ -15,19 +20,19 @@
     <% end %>
   </ul>
 
-    <br />
+  <br />
 
-  <ul class="events">
-    <%= label_tag 'Passed'%>
-    <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
-      <% if e.date < @date %>
-        <li>
-          <%= link_to  e.name , event_path(e.id) %>
-          <%= e.date %>
-        </li>
-      <% end %>
-    <%end%>
-  </ul>
+  <% if @events.past.any? %>
+    <h2>Passed</h2>
+    <ul class="events">
+      <% @user.attended_events.sort{ |a,b| b.date <=> a.date }.each do |e| %>
+        <% if e.date < @date %>
+          <li>
+            <%= link_to  e.name , event_path(e.id) %>
+            <%= e.date %>
+          </li>
+        <% end %>
+      <%end%>
+    </ul>
+  <% end %>
 <% end %>
-
-<%= link_to  "Create Event", new_event_path %>

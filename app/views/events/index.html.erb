@@ -3,23 +3,25 @@
 <% if !Event.any? %>
   <h2>No events</h2>
 <% else %>
-  <h2>Upcoming events</h2>
+  <h2>Upcoming Events</h2>
   <ul class = "upcoming">
     <% @events.upcoming.each do |e| %>
         <li>
-        <%= link_to  e.name, event_path(e.id) %>
-        <%= e.date %>
+          <%= link_to  e.name, event_path(e.id) %>
+          <%= e.date %>
         </li>
     <%end%>
   </ul>
 
-  <h2>Past events</h2>
-  <ul class = "past">
-    <% @events.past.each do |e| %>
-        <li>
-        <%= link_to  e.name, event_path(e.id) %>
-        <%= e.date %>
-        </li>
-    <%end%>
-  </ul>
+  <% if @events.past.any? %>
+    <h2>Past Events</h2>
+    <ul class = "past">
+      <% @events.past.each do |e| %>
+          <li>
+          <%= link_to  e.name, event_path(e.id) %>
+          <%= e.date %>
+          </li>
+      <%end%>
+    </ul>
+  <%end%>
 <% end %>

@@ -1,3 +1,69 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.create-cont {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  float: right;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .create-btn {
+    width: 100px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(192, 192, 192);
+    cursor: pointer;
+  }
+}
+
+.login-title {
+  text-align: center;
+  margin-top: 90px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 17rem;
+  margin: 0 auto;
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  .login-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .register-btn {
+    text-align: center;
+    padding: 4px;
+    background-color: rgb(241, 177, 56);
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    a {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  .register-btn:hover {
+    background-color: rgb(243, 158, 0);
+  }
+}

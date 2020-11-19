@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user(@user.id)
     @date = date_now
-
-    @events = Event.all
+    @events = @user.attended_events
   end
 
   def sign_in_new

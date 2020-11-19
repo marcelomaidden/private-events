@@ -5,4 +5,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
+
+  scope :upcoming, -> { where('date >= ?', Date.today) }
+  scope :past, -> { where('date < ? ', Date.today)}
 end
