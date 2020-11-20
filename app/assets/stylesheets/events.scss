@@ -1,0 +1,168 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+// .upcoming {
+//   background-color: rgb(212, 209, 209);
+// }
+
+// .past {
+//   background-color: rgb(175, 174, 174);
+// }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.back-to:hover {
+  color: rgb(255, 38, 0);
+}
+
+.upcoming-cont {
+  margin-bottom: 40px;
+}
+
+.past-cont {
+  margin-bottom: 80px;
+}
+
+ul {
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+  }
+
+  a:hover {
+    color: rgb(255, 38, 0);
+  }
+}
+
+.date-time {
+  margin: 0;
+}
+
+.create-title {
+  text-align: center;
+  margin-top: 90px;
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 17rem;
+  margin: 0 auto;
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    @extend input;
+
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 70px;
+    max-height: 70px;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  select {
+    margin-bottom: 15px;
+  }
+
+  .create-btn {
+    font: inherit;
+    color: black;
+    margin-bottom: 20px;
+  }
+}
+
+.field_with_errors {
+  display: inline;
+
+  input {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+.flash-events {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  width: 50%;
+  background-color: orange;
+  border-radius: 8px;
+  transition: all 0.5s;
+  animation: error 6s forwards;
+
+  @keyframes error {
+    0% {
+      transform: translateX(-5px);
+    }
+
+    5% {
+      transform: translateX(5px);
+    }
+
+    10% {
+      transform: translateX(-5px);
+    }
+
+    15% {
+      transform: translateX(5px);
+    }
+
+    20% {
+      transform: translateX(-5px);
+    }
+
+    25% {
+      transform: translateX(5px);
+    }
+
+    25% {
+      transform: translateX(0);
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-100px);
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  &:empty {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    border-width: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    background: none;
+  }
+}
+
+#user_user_id {
+  min-width: 87px;
+}

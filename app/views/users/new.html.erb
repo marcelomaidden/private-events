@@ -1,0 +1,15 @@
+<h1 class="register-title">Register</h1>
+
+<%= form_for @user, html:{ class: "register-form" } do |f| %>
+  <%= f.label :username, 'Username', class: "username-label" %>
+  <%= f.text_field :username, class: "username" %>
+  <%= f.label :password, 'Password', class: "password-label" %>
+  <%= f.password_field :password, class: "password" %>
+  <%= f.label :email, 'Email', class: "email-label" %>
+  <%= f.email_field :email, class: "email" %>
+  <%= f.submit 'Register', class: "register-btn" %>
+
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+<% end %>

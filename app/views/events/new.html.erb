@@ -1,0 +1,21 @@
+<% if session[:current_user] %>
+  <%= link_to  "< Back to My Events", user_path(session[:current_user]['id']), class: "back-to" %>
+<% end %>
+
+<h1 class="create-title">Create an Event</h1>
+
+<%= form_for @event, html: { class: "event-form" } do |f| %>
+  <%= f.label :name, 'Event Name', class: "name-label" %>
+  <%= f.text_field :name, class: "name" %>
+  <%= f.label :description, 'Event description', class: "desc-label" %>
+  <%= f.text_area :description, class: "desc" %>
+  <%= f.label :date, 'Event Date', class: "date-label" %>
+  <div>
+  <%= f.datetime_select :date, ampm: true, order: %i[day month year], default: 0.days.from_now.localtime, class: "date" %>
+  </div>
+  <%= f.submit 'Create Event', class: "create-btn" %>
+
+  <% @event.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+<% end %>

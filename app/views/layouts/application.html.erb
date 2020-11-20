@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="nav">
+          <%= link_to  "All Events", events_path %>
+
+          <% if session[:current_user].nil?%>
+            <%= link_to  "Register", new_user_path %>
+            <%= link_to  "Login", sign_in_path %>
+          <%else%>
+            <%= link_to  'My Events', user_path(session[:current_user]['id']) %>
+            <%= link_to  "Sign-out", sign_out_path %>
+          <%end%>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
+</html>

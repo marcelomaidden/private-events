@@ -1,0 +1,40 @@
+<%= link_to  "< Back to events", events_path, class: "back-to" %>
+<p class="flash-events"><%=flash.notice%></p>
+<h1><%= @event.name %></h1>
+
+<label>Event Description:</label><br />
+<%= @event.description %><br /><br />
+<label>Event Date:</label><br />
+<%= @event.date.localtime.strftime("%m/%d/%Y %H:%M") %><br />
+
+<br />
+<% if @event.attendee.any? %>
+<h3>Attendees</h3>
+<ul>
+  <% @event.attendee.each do |a| %>
+    <li>
+      <%= a.username %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
+<% if @event.date.localtime.strftime("%m/%d/%Y %H:%M") > @date %>
+  <% if session[:current_user] && !current_user_now.attended_events.where(id: @event.id).any? %>
+    <%= form_for @attendance do |f| %>
+      <%= hidden_field_tag :event_id, @event.id %>
+      <%=hidden_field_tag :user_id, session[:current_user]['id'], {id: 'user_user_id', name: 'user[user_id]'}%>
+      <%= f.submit 'Attend' %>
+    <% end %>
+  <% end %>
+
+  <% if @users_not_in.any? %>
+    <h3>Invite user</h3>
+    <%= form_for @attendance do |f| %>
+      <%= hidden_field_tag :event_id, @event.id %>
+      <%= select("user", "user_id", @users_not_in.collect {|p| [ p.username, p.id ] }, class: 'invitee') %>
+      <%= f.submit 'Invite', class: 'invite-btn' %>
+    <% end %>
+  <% end %>
+<% end %>
+

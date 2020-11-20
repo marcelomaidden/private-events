@@ -1,0 +1,108 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 17rem;
+  margin: 0 auto;
+
+  .username-label {
+    margin-bottom: 5px;
+  }
+
+  .password-label {
+    @extend .username-label;
+  }
+
+  .email-label {
+    @extend .username-label;
+  }
+
+  .username {
+    margin-bottom: 20px;
+  }
+
+  .password {
+    @extend .username;
+  }
+
+  .email {
+    @extend .username;
+  }
+
+  .login-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: inherit;
+    color: black;
+    cursor: pointer;
+  }
+
+  .register-btn {
+    font: inherit;
+    color: black;
+    text-align: center;
+    padding: 4px;
+    background-color: rgb(243, 158, 0);
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      color: black;
+    }
+
+    &:hover { background-color: rgb(241, 177, 56); }
+  }
+}
+
+.create-cont {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  float: right;
+
+  .create-btn {
+    width: 100px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(192, 192, 192);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(62, 100, 202);
+      color: white;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.login-title {
+  text-align: center;
+  margin-top: 90px;
+}
+
+.register-title {
+  @extend .login-title;
+}
+
+.register-form {
+  @extend .login-form;
+}
