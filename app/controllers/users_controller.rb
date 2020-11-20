@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       current_user(@user.id)
       redirect_to root_path
     else
-      render :sign_in
+      redirect_to sign_in_path, notice: 'User or password wrong'
     end
   end
 
