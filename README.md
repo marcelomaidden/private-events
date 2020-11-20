@@ -4,6 +4,9 @@
 
 Basic project for for Associate different models based on their foreign_keys and using source, validations and different names for relationships (creator, attendeed_events_attendances)
 
+## Live Preview
+[Private Events](https://secret-hamlet-66608.herokuapp.com)
+
 ## Built With
 
 - Ruby
