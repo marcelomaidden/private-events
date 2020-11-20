@@ -5,11 +5,11 @@
   </div>
 </div>
 
-<% if !@user.attended_events.any? || @my_events.any? %>
+<% if @user.attended_events.none? && @my_events.none?%>
   <h3>You don't have any Events</h3>
 <% else %>
-  <div class="upcoming-cont">
-    <% if @upcoming.any? %>
+  <% if @upcoming.any? %>
+    <div class="upcoming-cont">
       <h2>Upcoming Events</h2>
       <ul class="events">
         <% @attended_events.each do |e| %>
@@ -21,11 +21,12 @@
           <% end %>
         <% end %>
       </ul>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="past-cont">
-    <% if @past.any? %>
+
+  <% if @past.any? %>
+    <div class="past-cont">
       <h2>Past Events</h2>
       <ul class="events">
         <% @attended_events.each do |e| %>
@@ -37,18 +38,20 @@
           <% end %>
         <%end%>
       </ul>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
 
 <% if @my_events.any? %>
-  <h2>Created Events</h2>
-  <ul class="my-events">
-    <% @my_events.each do |me| %>
-      <li>
-        <%= link_to  me.name, event_path(me.id) %>
-        <%= content_tag(:p, "Event Date: #{me.date.localtime.strftime("%m/%d/%Y")} Time: #{me.date.localtime.strftime("%H:%M")}", class: "date-time") %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="my-events-cont">
+    <h2>Created Events</h2>
+    <ul class="my-events">
+      <% @my_events.each do |me| %>
+        <li>
+          <%= link_to  me.name, event_path(me.id) %>
+          <%= content_tag(:p, "Event Date: #{me.date.localtime.strftime("%m/%d/%Y")} Time: #{me.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
