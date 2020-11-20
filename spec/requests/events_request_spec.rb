@@ -23,14 +23,16 @@ RSpec.describe 'Events', type: :request do
   end
 
   describe 'GET /new' do
-    it 'renders sign in if not' do
+    it 'redirects to sign in if not signed' do
       get '/events/new'
-      expect(response).to render_template(:sign_in)
+      expect(response).to redirect_to(sign_in_path)
     end
 
     it 'renders new template' do
-      a = User.new(username: 'user1', password: 'password1')
-      a.save
+      def session
+        request.session
+      end
+      User.create!(username: 'user1', password: 'password1')
       session[:current_user] = User.find(1)
       get '/events/new'
       expect(response).to render_template(:new)
