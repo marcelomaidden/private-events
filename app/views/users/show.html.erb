@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<% if !@user.attended_events.any? %>
+<% if !@user.attended_events.any? || @my_events.any? %>
   <h3>You don't have any Events</h3>
 <% else %>
   <div class="upcoming-cont">
