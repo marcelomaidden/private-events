@@ -109,31 +109,40 @@ ul {
   border-radius: 8px;
   transition: all 0.5s;
   animation: error 6s forwards;
+
   @keyframes error {
     0% {
       transform: translateX(-5px);
     }
+
     5% {
       transform: translateX(5px);
     }
+
     10% {
       transform: translateX(-5px);
     }
+
     15% {
       transform: translateX(5px);
     }
+
     20% {
       transform: translateX(-5px);
     }
+
     25% {
       transform: translateX(5px);
     }
+
     25% {
       transform: translateX(0);
     }
+
     90% {
       opacity: 1;
     }
+
     100% {
       transform: translateY(-100px);
       opacity: 0;
@@ -153,4 +162,3 @@ ul {
     background: none;
   }
 }
-
