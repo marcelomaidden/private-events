@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && params[:password] == @user.password
       current_user(@user.id)
-      redirect_to events_path
+      redirect_to root_path
     else
       render :sign_in
     end

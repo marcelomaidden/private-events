@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'users#sign_in'
   post '/sign_in', to: 'users#sign_in_new'
   get '/sign_out', to: 'users#sign_out'
+  post '/sign_in', to: 'events#enroll'
   resources :events, only: %i[new create show index]
   resources :attendances
 end

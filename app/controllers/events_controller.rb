@@ -38,9 +38,8 @@ class EventsController < ApplicationController
   end
 
   def enroll
-    user = User.find(session[:current_user]['id'])
-    a = Attendance.new(user_id: user.id, event_id: params[:id])
-    a.save
-    redirect_to events_path
+    @user = User.find_by(username: params[:username])
+    current_user(@user.id) if @user && params[:password] == @user.password
+    # post sign_in_path, username: 'marcelomaidden', password: '12345678'
   end
 end
