@@ -15,7 +15,7 @@
                 <%= link_to  e.name, sign_in_path %>
               <% end %>
               <div>
-                <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+                <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%m/%d/%Y")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
               </div>
             </li>
         <%end%>
@@ -35,7 +35,7 @@
                 <%= link_to  e.name, sign_in_path %>
               <% end %>
             <div>
-              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%Y/%m/%d")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+              <%= content_tag(:p, "Event Date: #{e.date.localtime.strftime("%m/%d/%Y")} Time: #{e.date.localtime.strftime("%H:%M")}", class: "date-time") %>
             </div>
             </li>
         <%end%>

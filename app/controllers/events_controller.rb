@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   include UsersHelper
 
   def index
-    @upcoming = Event.upcoming
-    @past = Event.past
+    @upcoming = Event.upcoming.sort { |a, b| b.date <=> a.date }
+    @past = Event.past.sort { |a, b| b.date <=> a.date }
   end
 
   def show

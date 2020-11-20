@@ -47,7 +47,7 @@
     <% @my_events.each do |me| %>
       <li>
         <%= link_to  me.name, event_path(me.id) %>
-        <%= content_tag(:p, "Event Date: #{me.date.localtime.strftime("%Y/%m/%d")} Time: #{me.date.localtime.strftime("%H:%M")}", class: "date-time") %>
+        <%= content_tag(:p, "Event Date: #{me.date.localtime.strftime("%m/%d/%Y")} Time: #{me.date.localtime.strftime("%H:%M")}", class: "date-time") %>
       </li>
     <% end %>
   </ul>
