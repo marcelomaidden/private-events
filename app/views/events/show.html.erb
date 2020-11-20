@@ -32,7 +32,7 @@
     <h3>Invite user</h3>
     <%= form_for @attendance do |f| %>
       <%= hidden_field_tag :event_id, @event.id %>
-      <%= select("user", "user_id", @users_not_in.collect {|p| [ p.username, p.id ] }) %>
+      <%= select("user", "user_id", @users_not_in.collect {|p| [ p.username, p.id ] }, class: 'invitee') %>
       <%= f.submit 'Invite', class: 'invite-btn' %>
     <% end %>
   <% end %>
