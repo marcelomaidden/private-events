@@ -20,7 +20,7 @@
 <% end %>
 
 <% if @event.date.localtime.strftime("%m/%d/%Y %H:%M") > @date %>
-  <% if session[:current_user] %>
+  <% if session[:current_user] && !current_user_now.attended_events.where(id: @event.id).any? %>
     <%= form_for @attendance do |f| %>
       <%= hidden_field_tag :event_id, @event.id %>
       <%=hidden_field_tag :user_id, session[:current_user]['id'], {id: 'user_user_id', name: 'user[user_id]'}%>
@@ -33,7 +33,7 @@
     <%= form_for @attendance do |f| %>
       <%= hidden_field_tag :event_id, @event.id %>
       <%= select("user", "user_id", @users_not_in.collect {|p| [ p.username, p.id ] }) %>
-      <%= f.submit %>
+      <%= f.submit 'Invite', class: 'invite-btn' %>
     <% end %>
   <% end %>
 <% end %>
